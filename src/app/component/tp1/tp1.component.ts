@@ -5,8 +5,7 @@ import {Team} from '../../../model/team.model';
 
 @Component({
   selector: 'tp1',
-  templateUrl: 'tp1.component.html',
-  styleUrls: ['tp1.component.css']
+  templateUrl: 'tp1.component.html'
 })
 export class Tp1Component {
 
