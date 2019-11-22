@@ -12,8 +12,8 @@
         <tr *ngFor="let p of players" (click)="select(p)" [ngClass]="{'selected' : p === selected}">
             <td>{{ p.firstname + ' ' + p.lastname }}</td>
             <td>{{ p.jersey }}</td>
-            <td></td>
-            <td></td>
+            <td>{{ (p | getTeam: teams).fullname }}</td>
+            <td>{{ (p | getTeam: teams).conference }}</td>
         </tr>
         </tbody>
     </table>
@@ -21,7 +21,7 @@
 
 <hr />
 
-<p>Joueur sélectionné: {{ selected.firstname + ' ' + selected.lastname }}</p>
+<p *selectedPlayer="selected" [conference]="selected | getTeam: teams">Joueur sélectionné: {{ selected.firstname + ' ' + selected.lastname }}</p>
 
 <hr />
 
