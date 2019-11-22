@@ -1,0 +1,46 @@
+<div class="row">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">Player</th>
+            <th scope="col">Jersey number</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let p of players">
+            <!-- TODO: injecter les bonnes valeurs -->
+            <td></td>
+            <td></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<hr/>
+
+<form>
+    <!-- TODO: Corriger le formulaire -->
+    <div class="form-group">
+        <label for="lastname">Firstname</label>
+        <input type="text" class="form-control" id="firstname" name="firstname"
+               placeholder="Enter the player's firstname" required>
+    </div>
+    <div class="form-group">
+        <label for="lastname">Lastname</label>
+        <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Enter the player's lastname"
+               required>
+    </div>
+    <div class="form-group">
+        <label for="jerseyNumber">Jersey number</label>
+        <input type="number" class="form-control" id="jerseyNumber" name="jerseyNumber"
+               placeholder="Number between 0 and 99" min="0" max="99" required>
+    </div>
+    <div class="form-group">
+        <label for="team">Team</label>
+        <select class="form-control" id="team" name="team" required>
+            <option *ngFor="let t of teams; let i = index"
+                    [ngValue]="teams[i].id">{{ t.fullname + ' (' + t.conference + ')'}}</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Add player</button>
+</form>
