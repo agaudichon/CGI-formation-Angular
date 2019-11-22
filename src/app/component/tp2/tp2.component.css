@@ -1,0 +1,7 @@
+table tbody > tr {
+    cursor: pointer;
+}
+
+table tbody > tr.selected {
+    background-color: lightcoral;
+}
