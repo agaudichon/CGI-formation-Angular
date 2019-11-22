@@ -1,23 +1,21 @@
-import {Component, Input} from '@angular/core';
+import {Component} from '@angular/core';
 
 import {Player} from '../../../model/player.model';
 import {Team} from '../../../model/team.model';
+import {faEye} from "@fortawesome/free-solid-svg-icons";
 
 @Component({
-  selector: 'tp2',
-  templateUrl: 'tp2.component.html',
-  styleUrls: ['tp2.component.css']
+  selector: 'tp3',
+  templateUrl: 'tp3.component.html',
+  styleUrls: ['tp3.component.css']
 })
-export class Tp2Component {
+export class Tp3Component {
 
-  @Input()
   public players: Player[];
-
-  @Input()
   public teams: Team[];
-
   public player: Player;
   public selected: Player;
+  public iconEye = faEye;
 
   constructor() {
     this.resetCurrentPlayer();
@@ -29,14 +27,6 @@ export class Tp2Component {
       this.player.id = this.players.length + 1;
       this.players.push(this.player);
       this.resetCurrentPlayer();
-    }
-  }
-
-  public select(player: Player): void {
-    if (this.selected && this.selected === player) {
-      this.selected = null;
-    } else {
-      this.selected = player;
     }
   }
 

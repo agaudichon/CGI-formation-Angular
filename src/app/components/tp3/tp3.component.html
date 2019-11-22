@@ -6,22 +6,22 @@
             <th scope="col">Jersey number</th>
             <th scope="col">Team</th>
             <th scope="col">Conference</th>
+            <th scope="col">Voir joueur</th>
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let p of players" (click)="select(p)" [ngClass]="{'selected' : p === selected}">
+        <tr *ngFor="let p of players">
             <td>{{ p.firstname + ' ' + p.lastname }}</td>
             <td>{{ p.jersey }}</td>
-            <td>{{ (p | getTeam: teams).fullname }}</td>
-            <td>{{ (p | getTeam: teams).conference }}</td>
+            <td>{{ (p | getTeam).fullname }}</td>
+            <td>{{ (p | getTeam).conference }}</td>
+            <td>
+                <a href='#'><fa-icon [icon]="iconEye"></fa-icon></a>
+            </td>
         </tr>
         </tbody>
     </table>
 </div>
-
-<hr />
-
-<p *selectedPlayer="selected" [conference]="selected | getTeam: teams">Joueur sélectionné: {{ selected.firstname + ' ' + selected.lastname }}</p>
 
 <hr />
 
