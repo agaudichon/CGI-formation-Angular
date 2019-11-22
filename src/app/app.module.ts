@@ -11,12 +11,20 @@ import {ConferenceDirective} from "@app/directives/conference.directive";
 import {PageNotFoundComponent} from "@app/components/page-not-found/page-not-found.component";
 import {PlayerComponent} from "@app/components/player/player.component";
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
+import {DataService} from "@app/services/data.service";
+import {RouterModule, Routes} from "@angular/router";
+
+const appRoutes: Routes = [
+  { path: '', component: Tp3Component },
+  { path: 'player/:id', component: PlayerComponent },
+  { path: '**', component: PageNotFoundComponent }
+];
 
 @NgModule({
-  imports: [BrowserModule, FormsModule, NgbModule, FontAwesomeModule],
+  imports: [BrowserModule, FormsModule, NgbModule, FontAwesomeModule, RouterModule.forRoot(appRoutes)],
   declarations: [AppComponent, Tp3Component, GetTeamPipe, SelectedPlayerDirective, ConferenceDirective, PageNotFoundComponent, PlayerComponent],
   bootstrap: [AppComponent],
-  providers: [ ]
+  providers: [ DataService ]
 })
 export class AppModule {
 }

@@ -16,7 +16,7 @@
             <td>{{ (p | getTeam).fullname }}</td>
             <td>{{ (p | getTeam).conference }}</td>
             <td>
-                <a href='#'><fa-icon [icon]="iconEye"></fa-icon></a>
+                <a [routerLink]="['player', p.id]"><fa-icon [icon]="iconEye"></fa-icon></a>
             </td>
         </tr>
         </tbody>

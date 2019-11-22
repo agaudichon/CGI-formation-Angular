@@ -1,7 +1,8 @@
-import {Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 import {Player} from '../../../model/player.model';
 import {Team} from '../../../model/team.model';
+import {DataService} from "@app/services/data.service";
 import {faEye} from "@fortawesome/free-solid-svg-icons";
 
 @Component({
@@ -17,9 +18,11 @@ export class Tp3Component {
   public selected: Player;
   public iconEye = faEye;
 
-  constructor() {
+  constructor(private dataService: DataService) {
     this.resetCurrentPlayer();
     this.selected = null;
+    this.players = dataService.getPlayers();
+    this.teams = dataService.getTeams();
   }
 
   public addPlayer(): void {
