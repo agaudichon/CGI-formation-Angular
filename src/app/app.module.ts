@@ -8,7 +8,7 @@ import {Tp1Component} from "./component/tp1/tp1.component";
 
 @NgModule({
     imports: [BrowserModule, FormsModule, NgbModule],
-    declarations: [AppComponent /* Déclarer ici le composant Tp1 */],
+    declarations: [AppComponent, Tp1Component],
     bootstrap: [AppComponent]
 })
 export class AppModule {
