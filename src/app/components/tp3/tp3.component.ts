@@ -4,7 +4,8 @@ import { Validators } from '@angular/forms';
 
 import {Player} from '../../../model/player.model';
 import {Team} from '../../../model/team.model';
-import {DataService} from "@app/services/data.service";
+import {PlayerService} from "@app/services/player.service";
+import {TeamService} from "@app/services/team.service";
 import {faEye} from "@fortawesome/free-solid-svg-icons";
 
 @Component({
@@ -22,11 +23,9 @@ export class Tp3Component implements OnInit {
   public playerForm: FormGroup;
   
 
-  constructor(private dataService: DataService) {
+  constructor(private playerService: PlayerService, private teamService: TeamService) {
     //this.resetCurrentPlayer();
     this.selected = null;
-    this.players = dataService.getPlayers();
-    this.teams = dataService.getTeams();
   }
 
   ngOnInit(): void {
@@ -36,6 +35,13 @@ export class Tp3Component implements OnInit {
       jersey: new FormControl('', [Validators.required, Validators.min(0), Validators.max(99)]),
       teamId: new FormControl('', Validators.required),
     });
+
+    this.playerService.getPlayers().subscribe((data) => this.players = data,
+                                      error => console.log('call ngOnInit', error),
+                                      () => console.log('appel ok'));
+    this.teamService.getTeams().subscribe((data) => this.teams = data,
+                                      error => console.log('call ngOnInit', error),
+                                      () => console.log('appel ok'));
   }
 
   public addPlayer(): void {

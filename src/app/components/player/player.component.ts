@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {Player} from "../../../model/player.model";
-import {DataService} from "@app/services/data.service";
+import {PlayerService} from "@app/services/player.service";
 
 @Component({
   selector: 'app-player',
@@ -12,12 +12,14 @@ export class PlayerComponent implements OnInit {
 
   public player: Player;
 
-  constructor(private route: ActivatedRoute, private dataService: DataService) {
+  constructor(private route: ActivatedRoute, private playerService: PlayerService) {
   }
 
   ngOnInit() {
     this.route.paramMap.subscribe((params) => {
-      this.player = this.dataService.getPlayer(+params.get('id'))
+      this.playerService.getPlayer(+params.get('id')).subscribe((data) => this.player = data,
+                                      error => console.log('call ngOnInit', error),
+                                      () => console.log('appel ok'));
     });
   }
 
