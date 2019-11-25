@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import {AppComponent} from './app.component';
@@ -21,7 +21,7 @@ const appRoutes: Routes = [
 ];
 
 @NgModule({
-  imports: [BrowserModule, FormsModule, NgbModule, FontAwesomeModule, RouterModule.forRoot(appRoutes)],
+  imports: [BrowserModule, FormsModule, NgbModule, FontAwesomeModule, ReactiveFormsModule, RouterModule.forRoot(appRoutes)],
   declarations: [AppComponent, Tp3Component, GetTeamPipe, SelectedPlayerDirective, ConferenceDirective, PageNotFoundComponent, PlayerComponent],
   bootstrap: [AppComponent],
   providers: [ DataService ]

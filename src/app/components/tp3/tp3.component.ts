@@ -1,4 +1,6 @@
-import {Component, Input} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
+import { Validators } from '@angular/forms';
 
 import {Player} from '../../../model/player.model';
 import {Team} from '../../../model/team.model';
@@ -10,40 +12,56 @@ import {faEye} from "@fortawesome/free-solid-svg-icons";
   templateUrl: 'tp3.component.html',
   styleUrls: ['tp3.component.css']
 })
-export class Tp3Component {
-
+export class Tp3Component implements OnInit {
+  
   public players: Player[];
   public teams: Team[];
   public player: Player;
   public selected: Player;
   public iconEye = faEye;
+  public playerForm: FormGroup;
+  
 
   constructor(private dataService: DataService) {
-    this.resetCurrentPlayer();
+    //this.resetCurrentPlayer();
     this.selected = null;
     this.players = dataService.getPlayers();
     this.teams = dataService.getTeams();
   }
 
+  ngOnInit(): void {
+    this.playerForm = new FormGroup({
+      firstname: new FormControl('', [Validators.required]),
+      lastname: new FormControl('', Validators.required),
+      jersey: new FormControl('', [Validators.required, Validators.min(0), Validators.max(99)]),
+      teamId: new FormControl('', Validators.required),
+    });
+  }
+
   public addPlayer(): void {
-    if (this.isValid()) {
+    //if (this.isValid()) {
+      this.player = this.playerForm.value;
       this.player.id = this.players.length + 1;
       this.players.push(this.player);
-      this.resetCurrentPlayer();
-    }
+      //this.resetCurrentPlayer();
+    //}
   }
 
-  private isValid(): boolean {
+  getFormControl(name) {
+    return this.playerForm.get(name);
+}
+
+  /*private isValid(): boolean {
     return (this.player.firstname !== '' && this.player.lastname !== '' && (this.player.jersey >= 0) && (this.player.jersey < 100) && this.player.teamId !== null);
-  }
+  }*/
 
-  private resetCurrentPlayer() {
+  /*private resetCurrentPlayer() {
     this.player = {
       firstname: '',
       lastname: '',
       jersey: null,
       teamId: null
     };
-  }
+  }*/
 
 }
