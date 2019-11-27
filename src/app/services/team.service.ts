@@ -23,4 +23,5 @@ export class TeamService {
   public getTeam(id: number): Observable<Team> {
     return this.http.get<Team>(this.baseurl + '/teams/' + id, httpOptions)
   }
+
 }

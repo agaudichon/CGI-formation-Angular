@@ -26,4 +26,8 @@ export class PlayerService {
     return this.http.get<Player>(this.baseurl + '/players/' + id, httpOptions)
   }
 
+  public setPlayer(player: Player): Observable<any> {
+    return this.http.post<Player>(this.baseurl + '/players/', player, httpOptions)
+  }
+
 }

@@ -9,12 +9,9 @@ export class GetTeamPipe implements PipeTransform {
   public teams: Team[];
 
   constructor(private teamService: TeamService) {
-    this.teamService.getTeams().subscribe((data) => this.teams = data,
-                                      error => console.log('call ngOnInit', error),
-                                      () => console.log('appel ok'));
   }
 
-  transform(player: Player): Team {
-    return this.teams.find((t) => t.id === player.teamId);
+  transform(player: Player, teams: Team[]): Team {
+    return teams.find((t) => t.id === player.teamId);
   }
 }

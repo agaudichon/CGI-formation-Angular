@@ -7,6 +7,7 @@ import {Team} from '../../../model/team.model';
 import {PlayerService} from "@app/services/player.service";
 import {TeamService} from "@app/services/team.service";
 import {faEye} from "@fortawesome/free-solid-svg-icons";
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'tp3',
@@ -21,10 +22,11 @@ export class Tp3Component implements OnInit {
   public selected: Player;
   public iconEye = faEye;
   public playerForm: FormGroup;
+  public loading = true;
   
 
-  constructor(private playerService: PlayerService, private teamService: TeamService) {
-    //this.resetCurrentPlayer();
+  constructor(private playerService: PlayerService, private teamService: TeamService, private spinnerService: NgxSpinnerService) {
+    //this.resetCurrentPlayer();     
     this.selected = null;
   }
 
@@ -35,13 +37,12 @@ export class Tp3Component implements OnInit {
       jersey: new FormControl('', [Validators.required, Validators.min(0), Validators.max(99)]),
       teamId: new FormControl('', Validators.required),
     });
-
-    this.playerService.getPlayers().subscribe((data) => this.players = data,
-                                      error => console.log('call ngOnInit', error),
-                                      () => console.log('appel ok'));
-    this.teamService.getTeams().subscribe((data) => this.teams = data,
-                                      error => console.log('call ngOnInit', error),
-                                      () => console.log('appel ok'));
+    this.playerService.getPlayers().subscribe((data) => {this.players = data},
+                      error => console.log('call ngOnInit', error),
+                      () => console.log('appel ok'));
+    this.teamService.getTeams().subscribe((data) => {this.teams = data,this.spinnerService.hide();},
+                      error => console.log('call ngOnInit', error),
+                      () => console.log('appel ok'));
   }
 
   public addPlayer(): void {
@@ -49,6 +50,9 @@ export class Tp3Component implements OnInit {
       this.player = this.playerForm.value;
       this.player.id = this.players.length + 1;
       this.players.push(this.player);
+      this.playerService.setPlayer(this.player).subscribe((data) => {console.log(data)},
+      error => console.log('call ngOnInit', error),
+      () => console.log('appel ok'));
       //this.resetCurrentPlayer();
     //}
   }
