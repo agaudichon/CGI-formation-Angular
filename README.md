@@ -14,7 +14,7 @@ npm config set https_proxy "http:// fr-proxy.groupinfra.com:3128/"
 - Corriger le formulaire pour ajouter un joueur dans le tableau  
 
 ### Rendu
-![TP1](/assets/images/tp1.jpg)
+![TP1](/assets/images/tp1.png)
 
 ## TP 2
 ### Consignes:  
@@ -30,7 +30,8 @@ npm config set https_proxy "http:// fr-proxy.groupinfra.com:3128/"
 ```
 
 ### Rendu
-![TP2](/assets/images/tp2.jpg)
+![TP2 partie1](/assets/images/tp2_1.png)
+![TP2 partie2](/assets/images/tp2_2.png)
 
 ## TP 3
 ### Consignes:
@@ -44,6 +45,7 @@ npm config set https_proxy "http:// fr-proxy.groupinfra.com:3128/"
 - Modifier le tableau pour rediriger le clic sur le lien vers le composant `player` avec l’identifiant du joueur 
 
 ### Rendu
-![TP3](/assets/images/tp3.jpg)
+![TP3 partie1](/assets/images/tp3_1.png)
+![TP3 partie2](/assets/images/tp3_2.png)
 
 ## TP 4
