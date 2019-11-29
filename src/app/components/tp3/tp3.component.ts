@@ -14,7 +14,6 @@ import {faEye} from '@fortawesome/free-solid-svg-icons';
 export class Tp3Component implements OnInit {
 
   public players: Player[];
-  public teams: Team[];
   public selected: Player;
   public iconEye = faEye;
 
@@ -26,9 +25,6 @@ export class Tp3Component implements OnInit {
   ngOnInit(): void {
     this.playerService.getPlayers().subscribe((players) => {
       this.players = players;
-    });
-    this.teamService.getTeams().subscribe((teams) => {
-      this.teams = teams;
     });
   }
 
