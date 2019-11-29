@@ -1,7 +1,8 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { HttpClientModule } from '@angular/common/http';
 
 import {AppComponent} from './app.component';
 import {Tp3Component} from "./components/tp3/tp3.component";
@@ -11,7 +12,8 @@ import {ConferenceDirective} from "@app/directives/conference.directive";
 import {PageNotFoundComponent} from "@app/components/page-not-found/page-not-found.component";
 import {PlayerComponent} from "@app/components/player/player.component";
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
-import {DataService} from "@app/services/data.service";
+import {PlayerService} from "@app/services/player.service";
+import {TeamService} from "@app/services/team.service";
 import {RouterModule, Routes} from "@angular/router";
 
 const appRoutes: Routes = [
@@ -21,10 +23,10 @@ const appRoutes: Routes = [
 ];
 
 @NgModule({
-  imports: [BrowserModule, FormsModule, NgbModule, FontAwesomeModule, RouterModule.forRoot(appRoutes)],
+  imports: [BrowserModule, FormsModule, NgbModule, FontAwesomeModule, ReactiveFormsModule, HttpClientModule, RouterModule.forRoot(appRoutes)],
   declarations: [AppComponent, Tp3Component, GetTeamPipe, SelectedPlayerDirective, ConferenceDirective, PageNotFoundComponent, PlayerComponent],
   bootstrap: [AppComponent],
-  providers: [ DataService ]
+  providers: [ PlayerService, TeamService ]
 })
 export class AppModule {
 }

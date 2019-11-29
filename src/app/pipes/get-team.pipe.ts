@@ -1,15 +1,17 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import {Team} from "../../model/team.model";
 import {Player} from "../../model/player.model";
-import {DataService} from "@app/services/data.service";
+import {TeamService} from "@app/services/team.service";
 
 @Pipe({name: 'getTeam'})
 export class GetTeamPipe implements PipeTransform {
 
-  constructor(private dataService: DataService) {
+  public teams: Team[];
+
+  constructor(private teamService: TeamService) {
   }
 
-  transform(player: Player): Team {
-    return this.dataService.getTeam(player.teamId);
+  transform(player: Player, teams: Team[]): Team {
+    return teams.find((t) => t.id === player.teamId);
   }
 }

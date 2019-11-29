@@ -1,5 +1,5 @@
-<h2>
-  {{ player.firstname + ' ' + player.lastname + ' #' + player.jersey}}
+<h2 *ngIf="player">
+  {{ player?.firstname + ' ' + player?.lastname + ' #' + player?.jersey}}
 </h2>
 
 <hr />
