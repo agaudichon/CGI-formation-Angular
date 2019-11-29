@@ -13,8 +13,8 @@
         <tr *ngFor="let p of players">
             <td>{{ p.firstname + ' ' + p.lastname }}</td>
             <td>{{ p.jersey }}</td>
-            <td>{{ (p | getTeam | async).fullname }}</td>
-            <td>{{ (p | getTeam | async).conference }}</td>
+            <td>{{ (p | getTeam: 'fullname' | async) }}</td>
+            <td>{{ (p | getTeam: 'conference' | async) }}</td>
             <td>
                 <a [routerLink]="['player', p.id]"><fa-icon [icon]="iconEye"></fa-icon></a>
             </td>

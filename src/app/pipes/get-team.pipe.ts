@@ -7,15 +7,15 @@ import { Observable, of } from 'rxjs';
 @Pipe({name: 'getTeam'})
 export class GetTeamPipe implements PipeTransform {
 
-  public teams: Team[];
+  public teams: Team[] = [];
 
   constructor(private teamService: TeamService) {
     this.teamService.getTeams().subscribe((teams) => {
       this.teams = teams;
-    })
+    });
   }
 
-  transform(player: Player): Observable<Team> {
-    return of(this.teams.find((t) => t.id === player.teamId));
+  transform(player: Player, attribute: string): Observable<Team> {
+    return of(this.teams.find((t) => t.id === player.teamId)[attribute]);
   }
 }
