@@ -54,8 +54,14 @@ npm config set https_proxy "http://fr-proxy.groupinfra.com:3128/"
 - Dans les services `PlayerService` et `TeamService`, faire des appels http pour récupérer les données
 - Dans le service `PlayerService`, mettre en place l'appel pour enregistrer un joueur (attention, l'enregistrement ne sera jamais effectif, le backend étant un mock)
 - Mettre en place un formulaire de type reactive form dans le composant `tp4`
+  - Le champ `firstname` est obligatoire
+  - Le champ `lastname` est obligatoire
+  - Le champ `jersey number` est obligatoire et doit être compris entre 0 et 99 inclus
+  - Le champ `team` est obligatoire
 
 #### Rendu
+![TP4](/assets/images/tp4.png)
 
 ### TP 5
 #### Consignes
+A définir...
