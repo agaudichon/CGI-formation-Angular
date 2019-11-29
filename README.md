@@ -51,6 +51,9 @@ npm config set https_proxy "http://fr-proxy.groupinfra.com:3128/"
 
 ### TP 4
 #### Consignes
+- Dans les services `PlayerService` et `TeamService`, faire des appels http pour récupérer les données
+- Dans le service `PlayerService`, mettre en place l'appel pour enregistrer un joueur (attention, l'enregistrement ne sera jamais effectif, le backend étant un mock)
+- Mettre en place un formulaire de type reactive form dans le composant `tp4`
 
 #### Rendu
 
