@@ -1,9 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 
 import {Player} from '../../../model/player.model';
-import {Team} from '../../../model/team.model';
 import {PlayerService} from '@app/services/player.service';
-import {TeamService} from '@app/services/team.service';
 import {faEye} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -18,7 +16,7 @@ export class Tp3Component implements OnInit {
   public iconEye = faEye;
 
 
-  constructor(private playerService: PlayerService, private teamService: TeamService) {
+  constructor(private playerService: PlayerService) {
     this.selected = null;
   }
 
