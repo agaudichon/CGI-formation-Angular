@@ -22,7 +22,8 @@
     "allowSyntheticDefaultImports": true,
     "paths": {
       "@app/*": ["src/app/*"],
-      "@data/*": ["data/*"]
+      "@data/*": ["data/*"],
+      "@env/*": ["src/environments/*"]
     }
   }
 }

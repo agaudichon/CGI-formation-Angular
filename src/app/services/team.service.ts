@@ -1,8 +1,9 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import {Team} from "../../model/team.model";
+import {Team} from '../../model/team.model';
+import {ConfigurationToken} from "@app/configuration/configuration.token";
 
 const httpOptions = { 
 	headers: new HttpHeaders({ 'Content-Type': 'application/json' }) 
@@ -11,17 +12,18 @@ const httpOptions = {
 @Injectable()
 export class TeamService {
   
-  private baseurl = 'https://my-json-server.typicode.com/agaudichon/CGI-formation-Angular';
+  private readonly baseUrl: string;
 
-  constructor(private http: HttpClient) {
+  constructor(@Inject(ConfigurationToken) appConfiguration: any, private http: HttpClient) {
+    this.baseUrl = appConfiguration.fakeServerUrl;
   }
 
   public getTeams(): Observable<Team[]> {
-    return this.http.get<Team[]>(this.baseurl + '/teams', httpOptions);
+    return this.http.get<Team[]>(this.baseUrl + '/teams', httpOptions);
   }
 
   public getTeam(id: number): Observable<Team> {
-    return this.http.get<Team>(this.baseurl + '/teams/' + id, httpOptions)
+    return this.http.get<Team>(this.baseUrl + '/teams/' + id, httpOptions)
   }
 
 }
