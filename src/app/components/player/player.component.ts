@@ -17,9 +17,7 @@ export class PlayerComponent implements OnInit {
 
   ngOnInit() {
     this.route.paramMap.subscribe((params) => {
-      this.playerService.getPlayer(+params.get('id')).subscribe((data) => this.player = data,
-                                      error => console.log('call ngOnInit', error),
-                                      () => console.log('appel ok'));
+      this.playerService.getPlayer(+params.get('id')).subscribe((data) => this.player = data);
     });
   }
 
