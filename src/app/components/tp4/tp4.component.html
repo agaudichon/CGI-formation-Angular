@@ -1,39 +1,21 @@
-<form [formGroup]="playerForm" (ngSubmit)="addPlayer()">
+<form>
     <div class="form-group">
         <label for="firstname">Firstname</label>
-        <input type="text" class="form-control" formControlName="firstname" id="firstname" placeholder="Enter the player's firstname">
-        <div *ngIf="getFormControl('firstname').invalid && (getFormControl('firstname').dirty || getFormControl('firstname').touched)"
-            class="alert alert-danger">
-            <div *ngIf="getFormControl('firstname').errors.required">firstname is required.</div>
-        </div>
+        <input type="text" class="form-control" id="firstname" placeholder="Enter the player's firstname">
     </div>
     <div class="form-group">
         <label for="lastname">Lastname</label>
-        <input type="text" class="form-control" formControlName="lastname" id="lastname" placeholder="Enter the player's lastname">
-        <div *ngIf="getFormControl('lastname').invalid && (getFormControl('lastname').dirty || getFormControl('lastname').touched)"
-            class="alert alert-danger">
-            <div *ngIf="getFormControl('lastname').errors.required">lastname is required.</div>
-        </div>
+        <input type="text" class="form-control" id="lastname" placeholder="Enter the player's lastname">
     </div>
     <div class="form-group">
         <label for="jerseyNumber">Jersey number</label>
-        <input type="number" class="form-control" formControlName="jersey" id="jerseyNumber" placeholder="Number between 0 and 99">
-        <div *ngIf="getFormControl('jersey').invalid && (getFormControl('jersey').dirty || getFormControl('jersey').touched)"
-            class="alert alert-danger">
-            <div *ngIf="getFormControl('jersey').errors.required">jersey is required.</div>
-            <div *ngIf="getFormControl('jersey').errors.min || getFormControl('jersey').errors.max">jersey must be a number from 0 to 99.</div>
-        </div>
+        <input type="number" class="form-control" id="jerseyNumber" placeholder="Number between 0 and 99">
     </div>
     <div class="form-group">
         <label for="teamId">Team</label>
-        <select class="form-control" formControlName="teamId" id="teamId">
-            <option *ngFor="let t of teams; let i = index"
-            [ngValue]="teams[i].id">{{ t.fullname + ' (' + t.conference + ')'}}</option>
+        <select class="form-control" id="teamId">
+            <option *ngFor="let t of teams; let i = index" [ngValue]="teams[i].id">{{ t.fullname + ' (' + t.conference + ')'}}</option>
         </select>
-        <div *ngIf="getFormControl('teamId').invalid && (getFormControl('teamId').dirty || getFormControl('teamId').touched)"
-            class="alert alert-danger">
-            <div *ngIf="getFormControl('teamId').errors.required">team is required.</div>
-        </div>
     </div>
-    <button type="submit" class="btn btn-primary" [disabled]="!playerForm.valid">Add player</button>
+    <button type="submit" class="btn btn-primary">Add player</button>
 </form>

@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormGroup} from '@angular/forms';
 import {Team} from '../../../model/team.model';
 import {PlayerService} from '@app/services/player.service';
 import {TeamService} from '@app/services/team.service';
@@ -17,12 +17,6 @@ export class Tp4Component implements OnInit {
   }
 
   ngOnInit(): void {
-    this.playerForm = new FormGroup({
-      firstname: new FormControl('', [Validators.required]),
-      lastname: new FormControl('', Validators.required),
-      jersey: new FormControl('', [Validators.required, Validators.min(0), Validators.max(99)]),
-      teamId: new FormControl('', Validators.required),
-    });
     this.teamService.getTeams().subscribe((data) => {
       this.teams = data;
     });
